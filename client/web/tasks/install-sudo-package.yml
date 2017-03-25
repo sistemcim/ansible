@@ -1,0 +1,13 @@
+- name: install sudo
+  apt:
+   name: sudo
+   state: present
+
+- name: Give users sudo perm.
+  lineinfile:
+   dest: /etc/sudoers
+   line: '{{ item }}	ALL=(ALL:ALL) ALL'
+   state: present
+   validate: 'visudo -cf %s'
+  with_items: 
+  - "{{ users }}"

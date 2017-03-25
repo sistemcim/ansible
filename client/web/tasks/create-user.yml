@@ -1,0 +1,5 @@
+- name: create users
+  user: name={{ item }} state=present
+  with_items:
+  - "{{ users }}"
+

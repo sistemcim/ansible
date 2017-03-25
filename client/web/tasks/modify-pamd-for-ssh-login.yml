@@ -1,0 +1,10 @@
+  - name: Modify pam.d/sshd to allow login
+#    shell: sed -ri 's/^session\s+required\s+pam_loginuid.so$/session optional pam_loginuid.so/' /etc/pam.d/sshd
+    lineinfile:
+     dest: /etc/pam.d/sshd 
+     regexp: '^session\s+required\s+pam_loginuid.so$'
+     line: 'session optional pam_loginuid.so'  
+     state: present
+     backup: yes
+     backrefs: yes
+
