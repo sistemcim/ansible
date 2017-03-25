@@ -1,2 +1,3 @@
 ---
 - include: create-file.yml
+- include: get-file-content.yml

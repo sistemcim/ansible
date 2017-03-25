@@ -1,0 +1,6 @@
+---
+- name: get file content
+  shell: "cat {{ directory }}/{{ file }}"
+  register: content
+
+- debug: msg={{ content.stdout_lines }}
