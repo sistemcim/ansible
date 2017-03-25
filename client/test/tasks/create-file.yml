@@ -1,0 +1,36 @@
+---
+- name: Create file
+  file: name={{ directory }}/{{ file }} state=touch
+
+- name: Add line to file
+  lineinfile:
+   name: "{{ directory }}/{{ file }}"
+   line: "This is ansible test task file"
+   state: present
+
+- name: Add hostname to file
+  lineinfile:
+   name: "{{ directory }}/{{ file }}"
+   line: "Hostname: {{ ansible_hostname }}"
+   insertbefore: "^This is ansible test*"
+
+#- name: Modify hostname line
+#  lineinfile:
+#   name: "{{ directory }}/{{ file }}"
+#   regexp: "^Hostname=*"
+#   line: "Hostname: {{ ansible_hostname }}"
+#   state: present
+#   backrefs: yes
+
+#- name: Delete hostname
+#  lineinfile:
+#   name: "{{ directory }}/{{ file }}"
+#   line: "Hostname: {{ ansible_hostname }}"
+#   state: absent
+
+#- name: Remove test line from file
+#  lineinfile:
+#   name: "{{ directory }}/{{ file }}"
+#   line: "This is ansible test task file"
+#   state: absent
+
