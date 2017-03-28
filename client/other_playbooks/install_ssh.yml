@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+  - name: Install ssh service
+    apt:
+     name: ssh
+     state: present
+  
+  - name: Start and enable ssh service
+    service:
+     name=ssh
+     state=started
+     enabled=yes

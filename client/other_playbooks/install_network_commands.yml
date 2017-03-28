@@ -1,0 +1,15 @@
+---
+#- hosts: "{{ hosts }}"
+# If uncomment above, run with -e "hosts=all" parameter
+
+- hosts: all
+  tasks:
+  - name: install ifconfig command
+    apt: name=net-tools state=absent
+    when: 
+    - ansible_os_family == "Debian"
+
+  - name: install iproute command
+    apt: name=iproute state=present
+    when: 
+    - ansible_os_family == "Debian"

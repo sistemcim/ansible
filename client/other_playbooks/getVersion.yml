@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+  - name: Get Vi Version
+    shell: vi --version | grep VIM| grep IMproved
+    register: viVersion
+
+  - debug: var=viVersion.stdout_lines
+
+  - name: Get Python Version
+    shell: python --version
+    register: pythonVersion
+
+  - debug: var=pythonVersion.stderr

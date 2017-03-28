@@ -1,0 +1,14 @@
+- hosts : all
+  tasks: 
+  - name: install rsyslog package
+    apt:
+     name: rsyslog
+     state: present
+
+  - name: start rsyslog
+    service:
+     name: rsyslog
+     state: started
+     enabled: yes
+
+

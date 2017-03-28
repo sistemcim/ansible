@@ -1,0 +1,19 @@
+---
+- hosts: all
+  tasks:
+  - name: new file to write ip
+    file:
+     name: /root/ip
+     state: touch
+
+  - name: write ip to file
+    lineinfile:
+     name: /root/ip
+     line: "{{ ansible_eth0['ipv4']['address'] }}"
+     state: present
+  
+  - name: get ip from file
+    shell: cat /root/ip
+    register: ip
+
+  - debug: var=ip.stdout_lines

@@ -1,0 +1,18 @@
+---
+- hosts: all
+  tasks:
+  - name: write alphanumeric combinations with_items
+    shell: echo {{ item.number }} - {{ item.letter }}
+    with_items:
+    - { number: "1", letter: "a" }
+    - { number: "1", letter: "b" } 
+    - { number: "1", letter: "c" }
+    - { number: "2", letter: "a" } 
+    - { number: "2", letter: "b" }
+    - { number: "2", letter: "c" } 
+
+  - name: write alphanumeric combinations with_nested
+    shell: echo {{ item[0] }} - {{ item[1] }}
+    with_nested:
+    - ["1","2"]
+    - ["a","b","c"] 
